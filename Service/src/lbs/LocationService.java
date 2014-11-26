@@ -11,10 +11,13 @@ import android.location.Location;
 import android.os.Binder;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.util.Log;
 import android.widget.Toast;
 
 /**
  * 定位服务，打开app时开启，关闭app时关闭 请在app启动时bindservice 在app关闭时unbindservice
+ * 通过静态方法可以获取定位信息
+ * 调用前先判断是否定位成功及service是否已经开启
  * 
  * @author Jeese
  * 
@@ -22,6 +25,18 @@ import android.widget.Toast;
 public class LocationService extends Service implements AMapLocationListener {
 
 	private LocationManagerProxy mLocationManagerProxy = null;
+	
+	private static double geoLat;// 纬度
+	private static double geoLng;// 精度
+	private static String province; // 省名称
+	private static String city; // 城市名称
+	private static String city_code; // 城市编码
+	private static String district;// 区县名称
+	private static String ad_code;// 区域编码
+	private static String street;// 街道和门牌信息
+	private static String address;// 详细地址
+	
+	private static boolean success = false;//是否定位成功
 
 	@Override
 	public void onCreate() {
@@ -36,8 +51,6 @@ public class LocationService extends Service implements AMapLocationListener {
 			mLocationManagerProxy.destroy();
 		}
 		mLocationManagerProxy = null;
-		// 重置定位数据
-		mLocation.getInstance().setSuccess(false);
 		super.onDestroy();
 	}
 
@@ -46,7 +59,7 @@ public class LocationService extends Service implements AMapLocationListener {
 	 */
 	private void init() {
 
-		mLocationManagerProxy = LocationManagerProxy.getInstance(this);
+		mLocationManagerProxy = LocationManagerProxy.getInstance(LocationService.this);
 
 		// 此方法为每隔固定时间会发起一次定位请求，为了减少电量消耗或网络流量消耗，
 		// 注意设置合适的定位时间的间隔，并且在合适时间调用removeUpdates()方法来取消定位请求
@@ -86,23 +99,22 @@ public class LocationService extends Service implements AMapLocationListener {
 	public void onLocationChanged(AMapLocation amapLocation) {
 		if (amapLocation != null
 				&& amapLocation.getAMapException().getErrorCode() == 0) {
-			// 设置位置详细信息			
-			mLocation.getInstance().setGeoLat(amapLocation.getLatitude());
-			mLocation.getInstance().setGeoLng(amapLocation.getLongitude());
-			mLocation.getInstance().setProvince(amapLocation.getProvince());
-			mLocation.getInstance().setCity(amapLocation.getCity());
-			mLocation.getInstance().setCityCode(amapLocation.getCityCode());
-			mLocation.getInstance().setDistrict(amapLocation.getDistrict());
-			mLocation.getInstance().setAddress(amapLocation.getAddress());
-			mLocation.getInstance().setStreet(amapLocation.getStreet());
-			mLocation.getInstance().setAdCode(amapLocation.getAdCode());
+			// 设置位置详细信息		
+			geoLat = amapLocation.getLatitude();
+			geoLng = amapLocation.getLongitude();
+			province = amapLocation.getProvince();
+			city = amapLocation.getCity();
+			city_code = amapLocation.getCityCode();
+			district = amapLocation.getDistrict();
+			address = amapLocation.getAddress();
+			street = amapLocation.getStreet();
+			ad_code = amapLocation.getAdCode();
 
 			// 设置定位成功
-			mLocation.getInstance().setSuccess(true);
+			success = true;
 
-			Toast.makeText(
-					getApplicationContext(),"ubbhubhuhbu", Toast.LENGTH_LONG)
-					.show();
+			Log.i("mLocation", "定位成功" + amapLocation.getLatitude());
+			System.out.println("定位成功"+ amapLocation.getLatitude());
 		}
 	}
 
@@ -120,6 +132,38 @@ public class LocationService extends Service implements AMapLocationListener {
 		public LocationService getService() {
 			return LocationService.this;
 		}
+	}
+	
+	/*******     get     *************/
+	public static boolean getSuccess(){
+		return success;
+	}
+	public static double getGeoLat(){
+		return geoLat;
+	}
+	public static double getGeoLng(){
+		return geoLng;
+	}
+	public static String getProvince(){
+		return province;
+	}
+	public static String getCity(){
+		return city;
+	}
+	public static String getCityCode(){
+		return city_code;		
+	}
+	public static String getDistrict(){
+		return district;		
+	}
+	public static String getAdCode(){
+		return ad_code;	
+	}
+	public static String getStreet(){
+		return street;		
+	}
+	public static String getAddress(){
+		return address;		
 	}
 
 }

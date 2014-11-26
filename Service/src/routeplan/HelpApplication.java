@@ -26,6 +26,9 @@ public class HelpApplication extends Application {
 	public void onCreate() {
 		super.onCreate();
 		
+		Intent intent = new Intent(this, LocationService.class);
+		startService(intent);
+		
 		SDKInitializer.initialize(this);
 		// 初始化push推送服务
 		if (shouldInit()) {
