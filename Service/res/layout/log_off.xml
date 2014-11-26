@@ -1,0 +1,85 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ChangePassword" >
+
+        <TextView
+            android:id="@+id/log_off_top_layout"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:textSize="17sp"
+            android:background="@drawable/login_top_bg"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textColor="#ffffff"
+            android:text="注销" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/log_off_top_layout"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="40dp"
+        android:text="用户名"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/log_off_user"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_alignLeft="@id/textView"
+        android:layout_below="@id/textView"
+        android:background="@drawable/shape_white_no_conner"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="5dp"
+        android:inputType="textPersonName"
+        android:ems="10" >
+    	<requestFocus />
+    </EditText>
+    
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/log_off_user"
+        android:layout_below="@id/log_off_user"
+        android:layout_marginTop="30dp"
+        android:text="密码"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/log_off_password"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="5dp"
+        android:layout_below="@id/textView2"
+        android:layout_alignLeft="@id/textView2"
+        android:background="@drawable/shape_white_no_conner"
+        android:inputType="textPassword"
+        android:ems="10" >
+    	<requestFocus />
+    </EditText>
+    
+    <Button
+        android:id="@+id/log_off_ack"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_margin="40dp"
+        android:layout_below="@id/log_off_password"
+        android:background="@drawable/register_selector"
+        android:text="确定" />
+
+    <Button
+        android:id="@+id/log_off_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_below="@id/log_off_ack"
+        android:layout_alignLeft="@id/log_off_ack"
+        android:layout_marginRight="40dp"
+        android:background="@drawable/register_selector"
+        android:text="取消" />
+    
+</RelativeLayout>

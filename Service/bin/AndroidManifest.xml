@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="client.ui"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="11"
+        android:targetSdkVersion="21" />
+
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <!-- 推送模块权限配置开始 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="getui.permission.GetuiService" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+- 	
+    <!-- 自定义权限 -->
+    <permission
+        android:name="getui.permission.GetuiService"
+        android:protectionLevel="normal" />
+    <!-- 小米 开始 -->
+    <permission
+        android:name="client.ui.permission.MIPUSH_RECEIVE"
+        android:protectionLevel="signatureOrSystem" />
+    <!-- 这里com.xiaomi.mipushdemo改成app的包名 -->
+    <uses-permission android:name="client.ui.permission.MIPUSH_RECEIVE" />
+    <!-- 这里com.xiaomi.mipushdemo改成app的包名 -->
+    <!-- 小米 结束 -->
+- 	
+    <!-- 推送模块权限配置结束 -->
+
+
+    <!-- 导航 -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
+
+    <permission android:name="android.permission.BAIDU_LOCATION_SERVICE" >
+    </permission>
+
+    <uses-permission android:name="android.permission.BAIDU_LOCATION_SERVICE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />
+    <!-- <uses-permission android:name="android.permission.WRITE_APN_SETTINGS"></uses-permission> -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
+    <uses-permission android:name="android.permission.ACCESS_GPS" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <!-- SDK1.5需要android.permission.GET_TASKS权限判断本程序是否为当前运行的应用? -->
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.BROADCAST_STICKY" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <!-- 来电消音 -->
+    <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="false"
+        android:resizeable="true"
+        android:smallScreens="true" />
+    <!-- 导航结束 -->
+
+    <application
+        android:name="routeplan.HelpApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="AwIPYtCkYkzEBMwgxDNSn2b7" />
+
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote" >
+        </service>
+
+        <activity
+            android:name="client.ui.LoginActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="client.ui.ControlActivity"
+            android:icon="@drawable/icon"
+            android:label="@string/title_activity_control"
+            android:theme="@style/CustomTheme" >
+        </activity>
+        <activity android:name="client.ui.RegisterActivity" >
+        </activity>
+        <activity android:name="client.ui.ChgPwdActivity" >
+        </activity>
+        <activity android:name="client.ui.SendAssistMsgActivity" >
+        </activity>
+        <activity android:name="client.ui.SetupActivity" >
+        </activity>
+        <activity android:name="client.ui.PersonalInfoActivity" >
+        </activity>
+        <activity android:name="client.ui.Feekback" >
+        </activity>
+        <activity android:name="client.ui.LogOffActivity" >
+        </activity>
+        <activity android:name="client.ui.ValidationActivity" >
+        </activity>
+        <activity android:name="client.ui.SearchfriendActivity" >
+        </activity>
+        <activity android:name="client.ui.HistoryActivity" >
+        </activity>
+        <activity android:name="client.ui.aboutYiZhu" >
+        </activity>
+        <activity android:name="client.ui.Video" >
+        </activity>
+        <activity android:name="client.ui.Video_play" >
+        </activity>
+        <activity android:name="client.ui.Binding_number" >
+        </activity>
+        <activity android:name="client.ui.Audio" >
+        </activity>
+        <activity android:name="client.ui.CloseActivity" >
+        </activity>
+        <activity
+            android:name="client.ui.SendHelpMsgActivity"
+            android:windowSoftInputMode="adjustUnspecified|stateVisible" >
+        </activity>
+        <activity
+            android:name="client.ui.SendHealthHelpActivity"
+            android:windowSoftInputMode="adjustUnspecified|stateVisible" >
+        </activity>
+        <activity
+            android:name="client.ui.SendLifeHelpActivity"
+            android:windowSoftInputMode="adjustUnspecified|stateVisible" >
+        </activity>
+        <activity
+            android:name="client.ui.SendSecurityHelpActivity"
+            android:windowSoftInputMode="adjustUnspecified|stateVisible" >
+        </activity>
+        <activity android:name="client.ui.Findfriendresult" >
+        </activity>
+        <activity android:name="client.ui.DetailMessageActivity" >
+        </activity>
+        <activity android:name="client.ui.FriendInfoActivity" >
+        </activity>
+        <activity android:name="otherlogin.AuthorizeActivity" >
+        </activity>
+        <activity android:name="client.ui.Nearpeople" >
+        </activity>
+        <activity android:name="radialdemo.RadialMenuSecurity" >
+        </activity>
+        <activity android:name="radialdemo.RadialMenuLife" >
+        </activity>
+        <activity android:name="radialdemo.RadialMenuHealth" >
+        </activity>
+        <activity android:name="client.ui.AssistTipsActivity" >
+        </activity>
+        <activity
+            android:name="routeplan.BNavigatorActivity"
+            android:configChanges="orientation|screenSize|keyboard|keyboardHidden" />
+        <activity
+            android:name="routeplan.RoutePlan"
+            android:configChanges="orientation|keyboardHidden" >
+        </activity>
+        <activity
+            android:name="routeplan.Location"
+            android:configChanges="orientation|keyboardHidden" >
+        </activity>
+        <activity
+            android:name="routeplan.OfflineDemo"
+            android:configChanges="orientation|keyboardHidden" >
+        </activity>
+        <activity
+            android:name="routeplan.PoiSearchDemo"
+            android:configChanges="orientation|keyboardHidden" >
+        </activity>
+
+        <!-- 推送模块配置开始 -->
+        <!-- 配置第三方参数属性 -->
+        <meta-data
+            android:name="PUSH_APPID"
+            android:value="0yZq9kruSq8zvSpYB2UiA1" />
+        <meta-data
+            android:name="PUSH_APPKEY"
+            android:value="r3Gm2zkRsb8QLMq2U92Bi8" />
+        <meta-data
+            android:name="PUSH_APPSECRET"
+            android:value="htq3FUzjxq7XldtCYnUEXA" />
+        <meta-data
+            android:name="PUSH_GROUPID"
+            android:value="" />
+
+        <!-- 配置第三方Receiver -->
+        <receiver
+            android:name="communicate.PushReceiver"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="com.igexin.sdk.action.0yZq9kruSq8zvSpYB2UiA1" />
+            </intent-filter>
+        </receiver>
+
+        <!-- 配置SDK核心服务 -->
+        <service
+            android:name="com.igexin.sdk.PushService"
+            android:exported="true"
+            android:label="NotificationCenter"
+            android:process=":pushservice" >
+        </service>
+
+        <receiver android:name="com.igexin.sdk.PushReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                <action android:name="android.intent.action.USER_PRESENT" />
+                <action android:name="com.igexin.sdk.action.refreshls" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.igexin.sdk.PushReceiver"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="com.igexin.sdk.action.pushmanager" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name="com.igexin.sdk.PushActivity"
+            android:excludeFromRecents="true"
+            android:exported="false"
+            android:process=":pushservice"
+            android:taskAffinity="com.igexin.sdk.PushActivityTask"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+        </activity>
+
+        <service
+            android:name="com.igexin.download.DownloadService"
+            android:process=":pushservice" />
+
+        <receiver android:name="com.igexin.download.DownloadReceiver" >
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+
+        <provider
+            android:name="com.igexin.download.DownloadProvider"
+            android:authorities="downloads.client.ui"
+            android:process=":pushservice" />
+        <!-- android:authorities="downloads.第三方包名" -->
+
+        <activity
+            android:name="com.igexin.getuiext.activity.GetuiExtActivity"
+            android:configChanges="orientation|keyboard|keyboardHidden"
+            android:excludeFromRecents="true"
+            android:exported="false"
+            android:process=":pushservice"
+            android:taskAffinity="android.task.myServicetask"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <receiver
+            android:name="com.igexin.getuiext.service.PayloadReceiver"
+            android:exported="false" >
+            <intent-filter>
+
+                <!-- 这个com.igexin.sdk.action.7fjUl2Z3LH6xYy7NQK4ni4固定，不能修改 -->
+                <action android:name="com.igexin.sdk.action.7fjUl2Z3LH6xYy7NQK4ni4" />
+                <!-- android:name="com.igexin.sdk.action.第三方的appId" -->
+                <action android:name="com.igexin.sdk.action.0yZq9kruSq8zvSpYB2UiA1" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name="com.igexin.getuiext.service.GetuiExtService"
+            android:process=":pushservice" />
+        <!-- 小米 开始 -->
+        <service
+            android:name="com.xiaomi.push.service.XMPushService"
+            android:enabled="true"
+            android:process=":pushservice" />
+        <service
+            android:name="com.xiaomi.mipush.sdk.PushMessageHandler"
+            android:enabled="true"
+            android:exported="true" />
+        <service
+            android:name="com.xiaomi.mipush.sdk.MessageHandleService"
+            android:enabled="true" />
+        <!-- 注：此service必须在2.2.5版本以后（包括2.2.5版本）加入 -->
+        <receiver
+            android:name="com.xiaomi.push.service.receivers.NetworkStatusReceiver"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.xiaomi.push.service.receivers.PingReceiver"
+            android:exported="false"
+            android:process=":pushservice" >
+            <intent-filter>
+                <action android:name="com.xiaomi.push.PING_TIMER" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="communicate.MiPushReceiver"
+            android:exported="true" >
+
+            <!-- 这里com.xiaomi.mipushdemo.DemoMessageRreceiver改成app中定义的完整类名 -->
+            <intent-filter>
+                <action android:name="com.xiaomi.mipush.RECEIVE_MESSAGE" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.xiaomi.mipush.ERROR" />
+            </intent-filter>
+        </receiver>
+        <!-- 小米 结束 -->
+
+
+        <!-- 推送模块配置结束 -->
+
+
+        <!-- 高德导航和地图配置 -->
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="18f275b7e255000c45be95170d8deb68" />
+
+        <service
+            android:name="lbs.LocationService"
+            android:enabled="true" >
+        </service>
+    </application>
+
+</manifest>
