@@ -10,8 +10,10 @@ import com.amap.api.maps.model.CameraPosition;
 import com.amap.api.maps.model.LatLng;
 import com.amap.api.maps.model.MarkerOptions;
 
+import client.ui.DetailMessageActivity;
 import client.ui.R;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -23,6 +25,8 @@ public class mMapPage extends Activity implements OnClickListener {
 	private UiSettings mUiSettings;
 	
 	private Bundle bundle;
+	double desla;
+	double deslo;
 	private LatLng des;//目的地坐标
 
 	@Override
@@ -34,9 +38,13 @@ public class mMapPage extends Activity implements OnClickListener {
 
 		// 目的地位置经纬度
 		bundle = this.getIntent().getExtras();
-		double desla = bundle.getDouble("latitude");
-		double deslo = bundle.getDouble("longitude");
+		desla = bundle.getDouble("latitude");
+		deslo = bundle.getDouble("longitude");
 		des = new LatLng(desla,deslo);
+		
+		//定位一次
+		Intent intent = new Intent(this, LocationService.class);
+		startService(intent);
 		
 		init();
 	}
@@ -73,7 +81,7 @@ public class mMapPage extends Activity implements OnClickListener {
 				BitmapDescriptorFactory
 						.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
 		//将标记地点显示在屏幕中
-		aMap.animateCamera(CameraUpdateFactory
+		aMap.moveCamera(CameraUpdateFactory
 				.newCameraPosition(new CameraPosition(des, 16,
 						30, 0)));
 	}
@@ -119,9 +127,27 @@ public class mMapPage extends Activity implements OnClickListener {
 		switch (view.getId()) {
 
 		case R.id.mappage_walk:
+			Intent intent0 = new Intent();
+			Bundle bundle0 = new Bundle();
+			bundle0.putDouble("longitude",
+					deslo);
+			bundle0.putDouble("latitude",
+					desla);
+			intent0.putExtras(bundle0);
+			intent0.setClass(this,WalkRoutePlan.class);
+			startActivity(intent0);
 			break;
 
 		case R.id.mappage_drive:
+			Intent intent1 = new Intent();
+			Bundle bundle1 = new Bundle();
+			bundle1.putDouble("longitude",
+					deslo);
+			bundle1.putDouble("latitude",
+					desla);
+			intent1.putExtras(bundle1);
+			intent1.setClass(this,DriveRoutePlan.class);
+			startActivity(intent1);
 			break;
 
 		case R.id.mappage_transit:

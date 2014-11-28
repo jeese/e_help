@@ -4,6 +4,7 @@ import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationListener;
 import com.amap.api.location.LocationManagerProxy;
 import com.amap.api.location.LocationProviderProxy;
+import com.amap.api.maps.model.LatLng;
 
 import android.app.Service;
 import android.content.Intent;
@@ -34,6 +35,8 @@ public class LocationService extends Service implements AMapLocationListener {
 	private static String ad_code;// 区域编码
 	private static String street;// 街道和门牌信息
 	private static String address;// 详细地址
+	
+	private static LatLng latlng;
 
 	private static boolean success = false;// 是否定位成功
 
@@ -126,7 +129,6 @@ public class LocationService extends Service implements AMapLocationListener {
 
 	@Override
 	public IBinder onBind(Intent intent) {
-		// TODO Auto-generated method stub
 		return myBinder;
 	}
 
@@ -176,6 +178,10 @@ public class LocationService extends Service implements AMapLocationListener {
 
 	public static String getAddress() {
 		return address;
+	}
+	
+	public static LatLng getLatLng() {
+		return new LatLng(geoLat,geoLng);
 	}
 
 }
