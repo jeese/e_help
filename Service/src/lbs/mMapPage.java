@@ -10,7 +10,6 @@ import com.amap.api.maps.model.CameraPosition;
 import com.amap.api.maps.model.LatLng;
 import com.amap.api.maps.model.MarkerOptions;
 
-import client.ui.DetailMessageActivity;
 import client.ui.R;
 import android.app.Activity;
 import android.content.Intent;
@@ -151,6 +150,15 @@ public class mMapPage extends Activity implements OnClickListener {
 			break;
 
 		case R.id.mappage_transit:
+			Intent intent2 = new Intent();
+			Bundle bundle2 = new Bundle();
+			bundle2.putDouble("longitude",
+					deslo);
+			bundle2.putDouble("latitude",
+					desla);
+			intent2.putExtras(bundle2);
+			intent2.setClass(this,BusRoutePlan.class);
+			startActivity(intent2);
 			break;
 		}
 	}
