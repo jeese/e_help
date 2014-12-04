@@ -49,7 +49,8 @@ public class ControlActivity extends FragmentActivity implements
 	private static ViewPager mViewPager;
 	private PushImport pushimport;
 	private final Handler handler = new Handler();
-	private static int positiontag=0;
+	private static int positiontag = 0;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -71,7 +72,8 @@ public class ControlActivity extends FragmentActivity implements
 		// When swiping between different sections, select the corresponding
 		// tab. We can also use ActionBar.Tab#select() to do this if we have
 		// a reference to the Tab.
-		mViewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+		mViewPager
+				.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
 					@Override
 					public void onPageSelected(int position) {
 						actionBar.setSelectedNavigationItem(position);
@@ -88,28 +90,28 @@ public class ControlActivity extends FragmentActivity implements
 					.setText(mSectionsPagerAdapter.getPageTitle(i))
 					.setTabListener(this));
 		}
-		
-		fragments=new ArrayList<Fragment>();
+
+		fragments = new ArrayList<Fragment>();
 		fragments.add(new HelpFragment());
 		fragments.add(new MessageFragment());
 		fragments.add(new FriendFragment());
-		
+
 		pushimport = new PushImport(this);
 		pushimport.controlOnCreate(fragments, mViewPager);
 
 	}
-	
+
 	@Override
 	protected void onResume() {
 		pushimport.controlOnResume();
 		super.onResume();
 	}
-	
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.control, menu);
-		
+
 		return true;
 	}
 
@@ -118,7 +120,7 @@ public class ControlActivity extends FragmentActivity implements
 			FragmentTransaction fragmentTransaction) {
 		// When the given tab is selected, switch to the corresponding page in
 		// the ViewPager.
-		positiontag=tab.getPosition();
+		positiontag = tab.getPosition();
 		mViewPager.setCurrentItem(tab.getPosition());
 	}
 
@@ -131,43 +133,47 @@ public class ControlActivity extends FragmentActivity implements
 	public void onTabReselected(ActionBar.Tab tab,
 			FragmentTransaction fragmentTransaction) {
 	}
-	
+
 	@Override
-	public boolean onOptionsItemSelected(final MenuItem item){
-		switch(item.getItemId()){
-			case R.id.action_settings: 	
-				Intent intent=new Intent();
-				intent.setClass(ControlActivity.this,SetupActivity.class);
-				startActivityForResult(intent,0);
-				break;
-				
-			case R.id.action_tips : 	
-				startActivity(new Intent(ControlActivity.this,AssistTipsActivity.class));
-				break;
-			case R.id.menu_add: 	
-				startActivity(new Intent(ControlActivity.this,SearchfriendActivity.class));
-				break;
-			case R.id.history: 	
-				startActivity(new Intent(ControlActivity.this,HistoryActivity.class));
-				break;
-			case R.id.validationMSG:
-				startActivity(new Intent(ControlActivity.this, ValidationActivity.class));
-				break;
-				
-			case R.id.menu_refresh:
-				//选中刷新按钮后刷新一秒钟
-				Log.i("test",Integer.toString(positiontag));
-				if(positiontag==2){
-					item.setActionView(R.layout.actionbar_progress);
-					FriendFragment f = (FriendFragment) fragments.get(2);
-					f.Refresh(item);
-				}
-						
-				break;
-				
-			default:
-				return super.onOptionsItemSelected(item);
-		
+	public boolean onOptionsItemSelected(final MenuItem item) {
+		switch (item.getItemId()) {
+		case R.id.action_settings:
+			Intent intent = new Intent();
+			intent.setClass(ControlActivity.this, SetupActivity.class);
+			startActivityForResult(intent, 0);
+			break;
+
+		case R.id.action_tips:
+			startActivity(new Intent(ControlActivity.this,
+					AssistTipsActivity.class));
+			break;
+		case R.id.menu_add:
+			startActivity(new Intent(ControlActivity.this,
+					SearchfriendActivity.class));
+			break;
+		case R.id.history:
+			startActivity(new Intent(ControlActivity.this,
+					HistoryActivity.class));
+			break;
+		case R.id.validationMSG:
+			startActivity(new Intent(ControlActivity.this,
+					ValidationActivity.class));
+			break;
+
+		case R.id.menu_refresh:
+			// 选中刷新按钮后刷新一秒钟
+			Log.i("test", Integer.toString(positiontag));
+			if (positiontag == 2) {
+				item.setActionView(R.layout.actionbar_progress);
+				FriendFragment f = (FriendFragment) fragments.get(2);
+				f.Refresh(item);
+			}
+
+			break;
+
+		default:
+			return super.onOptionsItemSelected(item);
+
 		}
 		return true;
 	}
@@ -207,37 +213,37 @@ public class ControlActivity extends FragmentActivity implements
 			return null;
 		}
 	}
-	
+
 	@Override
 	protected void onPause() {
 		pushimport.controlOnPause();
 		super.onPause();
 	}
-	
+
 	@Override
 	protected void onDestroy() {
 		pushimport.controlOnDestroy();
 		super.onDestroy();
 	}
-	
-	public static void SetPager(int position)
-	{
+
+	public static void SetPager(int position) {
 		mViewPager.setCurrentItem(position);
 	}
-	
-	public static Drawable base64ToDrawable(String base64Data) {  
-		byte[] bytes = Base64.decode(base64Data, Base64.DEFAULT);  
-		Drawable drawable = new BitmapDrawable(BitmapFactory.decodeByteArray(bytes, 0, bytes.length));  
+
+	public static Drawable base64ToDrawable(String base64Data) {
+		byte[] bytes = Base64.decode(base64Data, Base64.DEFAULT);
+		Drawable drawable = new BitmapDrawable(BitmapFactory.decodeByteArray(
+				bytes, 0, bytes.length));
 		return drawable;
-	}  
-	
+	}
+
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		switch (resultCode) { //resultCode为回传的标记，我在B中回传的是RESULT_OK
-		   case 0:
-			   finish();
-			   break;
-		   default:
-			   break;
-		    }
+		switch (resultCode) { // resultCode为回传的标记，我在B中回传的是RESULT_OK
+		case 0:
+			finish();
+			break;
+		default:
+			break;
 		}
+	}
 }
