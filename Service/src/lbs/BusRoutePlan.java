@@ -59,7 +59,7 @@ OnMapClickListener, OnInfoWindowClickListener, InfoWindowAdapter {
 				bundle.getDouble("longitude"));
 		des = new LatLng(bundle.getDouble("latitude"),
 				bundle.getDouble("longitude"));
-//		
+		
 //		endPoint = new LatLonPoint(23.114155, 113.318977);
 //		des = new LatLng(23.114155, 113.318977);
 		
