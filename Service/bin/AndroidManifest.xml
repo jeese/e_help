@@ -213,12 +213,7 @@
             android:name="lbs.BusRoutePlan"
             android:configChanges="orientation|keyboardHidden" >
         </activity>
-        <receiver android:name="headset.HeadSetReceiver" >
-            <intent-filter android:priority="2147483647">
-                <action android:name="android.intent.action.MEDIA_BUTTON" >
-                </action>
-            </intent-filter>
-        </receiver>  
+
         <!-- 推送模块配置开始 -->
         <!-- 配置第三方参数属性 -->
         <meta-data

@@ -1,8 +1,5 @@
 package client.ui;
 
-import headset.HeadSetHelper;
-import headset.HeadSetHelper.OnHeadSetListener;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
@@ -10,6 +7,7 @@ import java.util.Map;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
 
 import routeplan.Location;
 import android.app.Activity;
@@ -61,24 +59,10 @@ public class SendSecurityHelpActivity extends Activity implements OnLongClickLis
 	private MediaRecorder	mMediaRecorder;
 	private String			strTempFile	= "audio_";
     
-	OnHeadSetListener headSetListener = new OnHeadSetListener() {
-		
-		@Override
-		public void onFiveClick() {
-			// TODO Auto-generated method stub
-			edt.setText("2秒内单击5次成功，可以发出紧急求助");
-		}
-	};
-	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		
-		//注册线控监听
-		HeadSetHelper.getInstance().setOnHeadSetListener(headSetListener);
-		HeadSetHelper.getInstance().open(this);
-		
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.sendsecurityhelp_activity);
 		close=(Button)findViewById(R.id.close);
