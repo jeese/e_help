@@ -3,17 +3,12 @@ package fragment;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.baidu.lbsapi.auth.LBSAuthManagerListener;
-import com.baidu.navisdk.BaiduNaviManager;
-import com.baidu.navisdk.BNaviEngineManager.NaviEngineInitListener;
+import lbs.mMapPage;
 
-import routeplan.RoutePlan;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Environment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,7 +32,6 @@ public class BottomButtonFragment extends Fragment {
 	private Close close;
 
 	public void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 	}
 
@@ -62,7 +56,7 @@ public class BottomButtonFragment extends Fragment {
 				bundle.putDouble("latitude",
 						DetailMessageActivity.Getlatitude());
 				intent.putExtras(bundle);
-				intent.setClass(getActivity(), RoutePlan.class);
+				intent.setClass(getActivity(), mMapPage.class);
 				startActivity(intent);
 			}
 		});

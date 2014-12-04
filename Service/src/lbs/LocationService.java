@@ -4,6 +4,7 @@ import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationListener;
 import com.amap.api.location.LocationManagerProxy;
 import com.amap.api.location.LocationProviderProxy;
+import com.amap.api.maps.model.LatLng;
 
 import android.app.Service;
 import android.content.Intent;
@@ -16,16 +17,15 @@ import android.widget.Toast;
 
 /**
  * 定位服务，打开app时开启，关闭app时关闭 请在app启动时bindservice 在app关闭时unbindservice
- * 通过静态方法可以获取定位信息
- * 调用前先判断是否定位成功及service是否已经开启
- * 
+ * 通过静态方法可以获取定位信息 调用前先判断是否定位成功及service是否已经开启
+ * service开启一次定位一次，需要更新位置时startservice则可
  * @author Jeese
  * 
  */
 public class LocationService extends Service implements AMapLocationListener {
 
 	private LocationManagerProxy mLocationManagerProxy = null;
-	
+
 	private static double geoLat;// 纬度
 	private static double geoLng;// 精度
 	private static String province; // 省名称
@@ -36,11 +36,17 @@ public class LocationService extends Service implements AMapLocationListener {
 	private static String street;// 街道和门牌信息
 	private static String address;// 详细地址
 	
-	private static boolean success = false;//是否定位成功
+	private static LatLng latlng;
+
+	private static boolean success = false;// 是否定位成功
 
 	@Override
 	public void onCreate() {
 		super.onCreate();
+	}
+
+	@Override
+	public void onStart(Intent intent, int startId) {
 		init();
 	}
 
@@ -59,14 +65,15 @@ public class LocationService extends Service implements AMapLocationListener {
 	 */
 	private void init() {
 
-		mLocationManagerProxy = LocationManagerProxy.getInstance(LocationService.this);
+		mLocationManagerProxy = LocationManagerProxy
+				.getInstance(LocationService.this);
 
 		// 此方法为每隔固定时间会发起一次定位请求，为了减少电量消耗或网络流量消耗，
 		// 注意设置合适的定位时间的间隔，并且在合适时间调用removeUpdates()方法来取消定位请求
 		// 在定位结束后，在合适的生命周期调用destroy()方法
 		// 其中如果间隔时间为-1，则定位只定一次
 		mLocationManagerProxy.requestLocationData(
-				LocationProviderProxy.AMapNetwork, 60 * 1000, 15, this);
+				LocationProviderProxy.AMapNetwork, -1, 15, this);
 
 		mLocationManagerProxy.setGpsEnable(false);
 	}
@@ -99,7 +106,7 @@ public class LocationService extends Service implements AMapLocationListener {
 	public void onLocationChanged(AMapLocation amapLocation) {
 		if (amapLocation != null
 				&& amapLocation.getAMapException().getErrorCode() == 0) {
-			// 设置位置详细信息		
+			// 设置位置详细信息
 			geoLat = amapLocation.getLatitude();
 			geoLng = amapLocation.getLongitude();
 			province = amapLocation.getProvince();
@@ -112,9 +119,8 @@ public class LocationService extends Service implements AMapLocationListener {
 
 			// 设置定位成功
 			success = true;
-
-			Log.i("mLocation", "定位成功" + amapLocation.getLatitude());
-			System.out.println("定位成功"+ amapLocation.getLatitude());
+			
+			System.out.println("定位一次" + amapLocation.getStreet());
 		}
 	}
 
@@ -123,7 +129,6 @@ public class LocationService extends Service implements AMapLocationListener {
 
 	@Override
 	public IBinder onBind(Intent intent) {
-		// TODO Auto-generated method stub
 		return myBinder;
 	}
 
@@ -133,37 +138,50 @@ public class LocationService extends Service implements AMapLocationListener {
 			return LocationService.this;
 		}
 	}
-	
-	/*******     get     *************/
-	public static boolean getSuccess(){
+
+	/******* get *************/
+	public static boolean getSuccess() {
 		return success;
 	}
-	public static double getGeoLat(){
+
+	public static double getGeoLat() {
 		return geoLat;
 	}
-	public static double getGeoLng(){
+
+	public static double getGeoLng() {
 		return geoLng;
 	}
-	public static String getProvince(){
+
+	public static String getProvince() {
 		return province;
 	}
-	public static String getCity(){
+
+	public static String getCity() {
 		return city;
 	}
-	public static String getCityCode(){
-		return city_code;		
+
+	public static String getCityCode() {
+		return city_code;
 	}
-	public static String getDistrict(){
-		return district;		
+
+	public static String getDistrict() {
+		return district;
 	}
-	public static String getAdCode(){
-		return ad_code;	
+
+	public static String getAdCode() {
+		return ad_code;
 	}
-	public static String getStreet(){
-		return street;		
+
+	public static String getStreet() {
+		return street;
 	}
-	public static String getAddress(){
-		return address;		
+
+	public static String getAddress() {
+		return address;
+	}
+	
+	public static LatLng getLatLng() {
+		return new LatLng(geoLat,geoLng);
 	}
 
 }
