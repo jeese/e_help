@@ -1,36 +1,23 @@
 package adapter;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import communicate.PushConfig;
-import communicate.PushSender;
-
-import client.ui.Findfriendresult;
-import client.ui.R;
-import client.ui.SearchfriendActivity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.res.Resources.NotFoundException;
 import android.os.AsyncTask;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.RadioButton;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.*;
+import client.ui.R;
+import communicate.PushConfig;
+import communicate.PushSender;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 //新建一个类，用来重写BaseExpandableListAdapter以及提供的数据源
 public class SearchFriendListAdapter extends BaseAdapter {

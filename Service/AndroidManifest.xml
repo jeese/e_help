@@ -21,7 +21,20 @@
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="getui.permission.GetuiService" />
     <uses-permission android:name="android.permission.GET_TASKS" />
-- 	
+- 	
+
+
+
+
+
+
+
+
+
+
+
+
+
     <!-- 自定义权限 -->
     <permission
         android:name="getui.permission.GetuiService"
@@ -34,7 +47,20 @@
     <uses-permission android:name="client.ui.permission.MIPUSH_RECEIVE" />
     <!-- 这里com.xiaomi.mipushdemo改成app的包名 -->
     <!-- 小米 结束 -->
-- 	
+- 	
+
+
+
+
+
+
+
+
+
+
+
+
+
     <!-- 推送模块权限配置结束 -->
 
 
@@ -107,6 +133,8 @@
             android:icon="@drawable/icon"
             android:label="@string/title_activity_control"
             android:theme="@style/CustomTheme" >
+        </activity>
+        <activity android:name="client.ui.PerfectInfomationActivity" >
         </activity>
         <activity android:name="client.ui.RegisterActivity" >
         </activity>

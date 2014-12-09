@@ -1,16 +1,15 @@
 package headset;
 
-import headset.HeadSetHelper.OnHeadSetListener;
-
-import java.util.Timer;
-import java.util.TimerTask;
-
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
 import android.view.KeyEvent;
+import headset.HeadSetHelper.OnHeadSetListener;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class HeadSetReceiver extends BroadcastReceiver{
 

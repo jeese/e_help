@@ -1,11 +1,6 @@
 package client.ui;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-
 import android.app.ActionBar;
-import android.app.ActivityManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
@@ -22,12 +17,14 @@ import android.util.Base64;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-
 import communicate.PushImport;
-
 import fragment.FriendFragment;
 import fragment.HelpFragment;
 import fragment.MessageFragment;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 
 public class ControlActivity extends FragmentActivity implements
 		ActionBar.TabListener {
@@ -142,7 +139,9 @@ public class ControlActivity extends FragmentActivity implements
 			intent.setClass(ControlActivity.this, SetupActivity.class);
 			startActivityForResult(intent, 0);
 			break;
-
+		case R.id.perfect_settings:
+			startActivity(new Intent(ControlActivity.this, PerfectInfomationActivity.class));
+			break;
 		case R.id.action_tips:
 			startActivity(new Intent(ControlActivity.this,
 					AssistTipsActivity.class));
@@ -161,7 +160,7 @@ public class ControlActivity extends FragmentActivity implements
 			break;
 
 		case R.id.menu_refresh:
-			// Ñ¡ÖÐË¢ÐÂ°´Å¥ºóË¢ÐÂÒ»ÃëÖÓ
+			// Ñ¡ï¿½ï¿½Ë¢ï¿½Â°ï¿½Å¥ï¿½ï¿½Ë¢ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½
 			Log.i("test", Integer.toString(positiontag));
 			if (positiontag == 2) {
 				item.setActionView(R.layout.actionbar_progress);
@@ -238,7 +237,7 @@ public class ControlActivity extends FragmentActivity implements
 	}
 
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		switch (resultCode) { // resultCodeÎª»Ø´«µÄ±ê¼Ç£¬ÎÒÔÚBÖÐ»Ø´«µÄÊÇRESULT_OK
+		switch (resultCode) { // resultCodeÎªï¿½Ø´ï¿½ï¿½Ä±ï¿½Ç£ï¿½ï¿½ï¿½ï¿½ï¿½Bï¿½Ð»Ø´ï¿½ï¿½ï¿½ï¿½ï¿½RESULT_OK
 		case 0:
 			finish();
 			break;

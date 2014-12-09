@@ -1,8 +1,5 @@
 package adapter;
 
-import java.util.List;
-import java.util.Map;
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,6 +13,9 @@ import android.widget.TextView;
 import client.ui.ControlActivity;
 import client.ui.DetailMessageActivity;
 import client.ui.R;
+
+import java.util.List;
+import java.util.Map;
 
 
 
