@@ -29,7 +29,7 @@
 		android:showAsAction="never"
 		android:title="历史记录" />
     <item
-            android:id="@+id/perfect_setting"
+            android:id="@+id/perfect_settings"
             android:showAsAction="never"
             android:title="完善信息"/>
     <item
