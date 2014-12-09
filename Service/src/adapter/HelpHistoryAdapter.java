@@ -1,8 +1,5 @@
 package adapter;
 
-import java.util.List;
-import java.util.Map;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +10,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import client.ui.ControlActivity;
 import client.ui.R;
+
+import java.util.List;
+import java.util.Map;
 
 public class HelpHistoryAdapter extends BaseAdapter{
 	
