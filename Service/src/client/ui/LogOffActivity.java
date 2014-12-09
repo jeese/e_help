@@ -1,11 +1,5 @@
 package client.ui;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import android.app.Activity;
 import android.content.res.Resources.NotFoundException;
 import android.os.AsyncTask;
@@ -16,9 +10,13 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import communicate.PushConfig;
 import communicate.PushSender;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class LogOffActivity extends Activity {
 	private Button makesure,cancel;

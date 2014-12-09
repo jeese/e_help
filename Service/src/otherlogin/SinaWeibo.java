@@ -1,13 +1,12 @@
 package otherlogin;
 
+import android.util.Log;
+import org.json.simple.JSONObject;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import org.json.simple.JSONObject;
-
-import android.util.Log;
 
 public class SinaWeibo extends Platform {
 	private static final String platformname = "sinaweibo";

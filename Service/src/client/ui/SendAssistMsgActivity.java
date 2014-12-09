@@ -1,17 +1,6 @@
 package client.ui;
 
-import java.io.File;
-import java.util.HashMap;
-import java.util.Map;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import routeplan.Location;
-
 import android.app.Activity;
-import android.content.Intent;
-import android.content.res.Configuration;
 import android.content.res.Resources.NotFoundException;
 import android.media.MediaPlayer;
 import android.os.AsyncTask;
@@ -19,17 +8,16 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
-import android.widget.AdapterView;
+import android.widget.*;
 import android.widget.AdapterView.OnItemSelectedListener;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ProgressBar;
-import android.widget.Spinner;
-import android.widget.Toast;
-
 import communicate.PushConfig;
 import communicate.PushSender;
+import org.json.JSONException;
+import org.json.JSONObject;
+import routeplan.Location;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class SendAssistMsgActivity extends Activity{

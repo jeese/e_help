@@ -17,7 +17,7 @@
         android:id="@+id/action_tips"
         android:showAsAction="never"
         android:title="求助提示"/>
-    
+
     <!-- 设置按钮图标 -->
     <item
         android:id="@+id/action_settings"
@@ -28,7 +28,10 @@
 		android:id="@+id/history"
 		android:showAsAction="never"
 		android:title="历史记录" />
-    
+    <item
+            android:id="@+id/perfect_settings"
+            android:showAsAction="never"
+            android:title="完善信息"/>
     <item
 		android:id="@+id/validationMSG"
 		android:showAsAction="never"
